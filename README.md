@@ -56,7 +56,7 @@
 
 ## پیش‌نیازها
 
-کتابخانه **AirNgin STM32 MQTT Client** برای اجرا نیاز به کتابخانه‌های زیر دارد. برخی از این کتابخانه‌ها به‌صورت پیش‌فرض در Arduino Core برای ESP32 موجود هستند، اما برخی دیگر باید به‌صورت دستی نصب شوند.
+کتابخانه **AirNgin STM32 MQTT Client** برای اجرا نیاز به کتابخانه‌های زیر دارد. برخی از این کتابخانه‌ها به‌صورت پیش‌فرض در Arduino Core برای STM32 موجود هستند، اما برخی دیگر باید به‌صورت دستی نصب شوند.
 
 ### کتابخانه‌های پیش‌فرض (نیازی به نصب دستی ندارند):
 
@@ -67,31 +67,6 @@
 5. `ArduinoJson`  
 6. `Dns`  
 
-### کتابخانه‌هایی که باید نصب شوند:
-
-لطفاً پیش از استفاده از کتابخانه، موارد زیر را از **Library Manager** در Arduino IDE نصب کنید:
-
-1. **WebServer**  
-   بخشی از ESP32 Core است، اما اگر نصب نبود، می‌توانید از Library Manager نصب کنید.
-
-2. **PubSubClient**  
-   لینک به مخزن: [PubSubClient](https://github.com/knolleary/pubsubclient)  
-   یا از Library Manager با جستجوی `PubSubClient` نصب کنید.
-
-3. **ArduinoJson**  
-   لینک به مخزن: [ArduinoJson](https://github.com/bblanchon/ArduinoJson)  
-   یا از Library Manager با جستجوی `ArduinoJson` نصب کنید.
-
-4. **HTTPUpdate**  
-   این کتابخانه بخشی از ESP32 Core است. اگر نصب نبود، می‌توانید از Library Manager نصب کنید.
-
-5. **ESPping**  
-   لینک به مخزن: [ESPping](https://github.com/dancol90/ESPping)  
-   یا از Library Manager با جستجوی `ESPping` نصب کنید.
-
-
-
-
 ## **روش‌های نصب کتابخانه**
 
 ### **روش 1: نصب از طریق Library Manager در Arduino IDE**
@@ -99,7 +74,7 @@
 1. Arduino IDE را باز کنید.
 2. به منوی **Sketch > Include Library > Manage Libraries...** بروید.
 3. در کادر جستجو، عبارت زیر را وارد کنید:
-AirNgin ESP32 MQTT Client
+AirNgin STM32 MQTT Client
 
 4. کتابخانه را از لیست نتایج پیدا کرده و روی **Install** کلیک کنید.
 
@@ -108,7 +83,7 @@ AirNgin ESP32 MQTT Client
 ### **روش 2: نصب دستی از طریق فایل ZIP**
 
 1. به صفحه اصلی مخزن گیت‌هاب کتابخانه بروید:  
-[AirNgin ESP32 MQTT Client](https://github.com/AirNgin/Airngin-esp32-mqtt-client)
+[AirNgin STM32 MQTT Client](https://github.com/AirNgin/Airngin-stm32-mqtt-client)
 2. روی دکمه **Code** کلیک کرده و گزینه **Download ZIP** را انتخاب کنید.
 3. پس از دانلود، Arduino IDE را باز کرده و به منوی **Sketch > Include Library > Add .ZIP Library...** بروید.
 4. فایل ZIP دانلود شده را انتخاب کنید و روی **Open** کلیک کنید.
@@ -124,7 +99,7 @@ Documents/Arduino/libraries/
 
 2. یک ترمینال یا Command Prompt باز کنید و دستور زیر را اجرا کنید:
 ```bash
-git clone https://github.com/AirNgin/Airngin-esp32-mqtt-client.git
+git clone https://github.com/AirNgin/Airngin-stm32-mqtt-client.git
 ```
 
 Arduino IDE را باز کنید. کتابخانه به‌صورت خودکار شناسایی می‌شود و آماده استفاده خواهد بود.
