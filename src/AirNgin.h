@@ -7,17 +7,15 @@
 #ifndef airngin_h
 #define airngin_h
 
-#define SOFTWARE_VERSION "1.0.0"
+#define SOFTWARE_VERSION "0.1.1"
 
-#define DVC_DEFAULTPASS "00000000"  // DONT CHANGE THIS
-#define SOFTWARE_DATE "1404.04.31"
+#define SOFTWARE_DATE "1404.06.03"
 
 
 
 #include <Arduino.h>
 #include <Ethernet.h>
 #include <EEPROM.h>
-// #include <WString.h>
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
 #include <Dns.h>
@@ -226,7 +224,6 @@ private:
     bool EthernetConnected();
     void updateMQTT();
     bool checkInternet();
-    void updateEthernet();
     void DebugPrint(const char* fmt, ...);
     void MemoCheck();
     void broadcastInfo();

@@ -67,18 +67,17 @@ void AirNginClient::GenerateMAC(byte mac[6]) {
 
 
 void AirNginClient::loop() {
-    updateEthernet();
     updateMQTT();
     handleUdp();
-    
-  if (!instance->stopBroadcast && instance->isConfigMode) {
-      instance->Debug_ConsolePrintln("Config Mode Active");
-      broadcastInfo();
-    }
 }
 
 void AirNginClient::handleUdp() {
   if (!instance->isConfigMode) return; // در حالت پیکربندی، فقط MQTT را به‌روزرسانی می‌کنیم
+  
+  if (!instance->stopBroadcast && instance->isConfigMode) {
+      instance->Debug_ConsolePrintln("Config Mode Active");
+      broadcastInfo();
+  }
 
   int packetSize = Udp.parsePacket();
 
@@ -195,39 +194,6 @@ void AirNginClient::printNetInfo() {
   instance->Debug_ConsolePrint(F("-----------------------"));
 }
 
-
-
-// Ethernet Handler
-void AirNginClient::updateEthernet() {
-    static bool lastStatus = false;
-    static unsigned long lastPingCheck = 0;
-
-    bool currentStatus = (Ethernet.linkStatus() != LinkOFF);
-
-    // فقط وقتی وصل میشه، تلاش برای گرفتن IP
-    if (currentStatus && !lastStatus) {
-        instance->Debug_ConsolePrintln("Trying to reconnect Ethernet ...");
-
-        if (Ethernet.begin(mac)) {
-            instance->Debug_ConsolePrintln("Ethernet reconnected via DHCP");
-            printNetInfo();
-        } else {
-            instance->Debug_ConsolePrintln("DHCP Failed, using fallback IP");
-            IPAddress fallbackIP(192, 168, 0, 200);
-            IPAddress fallbackDNS(8, 8, 8, 8);
-            IPAddress fallbackGW(192, 168, 0, 1);
-            IPAddress fallbackSN(255, 255, 255, 0);
-            Ethernet.begin(mac, fallbackIP, fallbackDNS, fallbackGW, fallbackSN);
-            printNetInfo();
-        }
-
-        // تلاش برای وصل شدن دوباره به MQTT
-        _Mqtt_TryConnecting = true;
-    }
-
-    // به‌روزرسانی وضعیت
-    lastStatus = currentStatus;
-}
 
 // Internet Ping Check
 bool AirNginClient::checkInternet() {
